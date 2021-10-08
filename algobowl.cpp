@@ -5,6 +5,7 @@
 #include <map>
 #include <set>
 #include <sstream>
+
 using namespace std;
 int main() {
     ifstream f;
@@ -12,9 +13,9 @@ int main() {
     f.open("input.txt");
 
     string numElements;
-    f >> numElements;
+    getline(f,numElements);
     string numSets;
-    f >> numSets;
+    getline(f,numSets);
 
     map<set<int>,int> subsets;
 
@@ -31,10 +32,18 @@ int main() {
             subset.emplace(stoi(num));
         }
 
-        f >> line;
+        getline(f,line);
         subsets.emplace(subset,stoi(line));
+
+        
     }   
     f.close();
+    for(const auto &p : subsets) {
+            for(const auto &s : p.first) {
+                cout << s << " ";
+            }
+            cout << p.second << endl;
+        }
     return 0;
 
 }
