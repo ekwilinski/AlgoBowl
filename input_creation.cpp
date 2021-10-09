@@ -8,12 +8,20 @@
 #include <map>
 #include <set>
 #include <sstream>
+#include <vector>
 
 using namespace std;
+
+set<int> union_set(vector<set<int>> sets)   {
+    set<int> union_set;
+
+}
 
 map<set<int>, int> create_input(int n)    {
     map<set<int>, int> input;
     int numSubsets = rand() % 500 + 1;
+
+    vector<set<int>> sets;
 
 //    while
 
