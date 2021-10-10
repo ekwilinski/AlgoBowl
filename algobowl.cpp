@@ -11,12 +11,6 @@
 
 using namespace std;
 
-typedef tuple<double,set<int>> mytuple;
-
-bool sortbysec(const mytuple &lhs, const mytuple &rhs) {
-    return (get<1>(lhs) > get<1>(rhs));
-}
-
 int main(int argc, char** argv) {
     ifstream f;
     f.open("input.txt");
