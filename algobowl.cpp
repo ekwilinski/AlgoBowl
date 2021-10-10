@@ -5,11 +5,20 @@
 #include <map>
 #include <set>
 #include <sstream>
+#include <vector>
+#include <algorithm>
+#include <tuple>
 
 using namespace std;
-int main() {
-    ifstream f;
 
+typedef tuple<double,set<int>> mytuple;
+
+bool sortbysec(const mytuple &lhs, const mytuple &rhs) {
+    return (get<1>(lhs) > get<1>(rhs));
+}
+
+int main(int argc, char** argv) {
+    ifstream f;
     f.open("input.txt");
 
     string numElements;
@@ -38,12 +47,16 @@ int main() {
         
     }   
     f.close();
+
+    map<int,vector<pair<double,set<int>>>> elementRatios;
+
     for(const auto &p : subsets) {
             for(const auto &s : p.first) {
-                cout << s << " ";
+                elementRatios[s].push_back(make_pair((double)(p.second)/p.first.size(),p.first));
             }
-            cout << p.second << endl;
-        }
+    }
+
+    
     return 0;
 
 }
