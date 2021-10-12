@@ -18,7 +18,7 @@ bool sortbysec(const tuple<set<int>,double>& a, const tuple<set<int>, double>& b
 
 int main(int argc, char** argv) {
     ifstream f;
-    f.open("inputs/input_group338.txt");
+    f.open("inputs/input_group307.txt");
 
     string numElements;
     getline(f,numElements);
