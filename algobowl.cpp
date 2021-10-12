@@ -18,7 +18,7 @@ bool sortbysec(const tuple<set<int>,double>& a, const tuple<set<int>, double>& b
 
 int main(int argc, char** argv) {
     ifstream f;
-    f.open("input.txt");
+    f.open("inputs/input_group338.txt");
 
     string numElements;
     getline(f,numElements);
@@ -32,20 +32,23 @@ int main(int argc, char** argv) {
         stringstream s;
         string line;
         getline(f,line);
-        s << line;
-        set<int> subset;
 
-        while(!s.eof()) {
-            string num;
-            s >> num;
-            subset.emplace(stoi(num));
-        }
+        if(line != "") {
+            s << line;
+            set<int> subset;
 
-        getline(f,line);
-        subsets.emplace(subset,make_tuple(stoi(line),ID,(double)(stoi(line))/subset.size()));
-        ID++;
-    }   
-    f.close();
+            while(!s.eof()) {
+                string num;
+                s >> num;
+                subset.emplace(stoi(num));
+            }
+
+            getline(f,line);
+            subsets.emplace(subset,make_tuple(stoi(line),ID,(double)(stoi(line))/subset.size()));
+            ID++;
+        }   
+    }
+        f.close();
 
     //solutionSet is a set of tuples with (subset, weight)
     set<tuple<set<int>,int>> solutionSet;
@@ -81,5 +84,5 @@ int main(int argc, char** argv) {
         cout << get<1>(p) << " ";
     }
     return 0;
-
+//10+8+13+2+15+12+6+18+3 = 87 input_rand.txt validated
 }
