@@ -18,7 +18,7 @@ bool sortbysec(const tuple<set<int>,double>& a, const tuple<set<int>, double>& b
 
 int main(int argc, char** argv) {
     ifstream f;
-    f.open("inputs/input_group312.txt");
+    f.open("inputs/input_group300.txt");
 
     string numElements;
     getline(f,numElements);
@@ -71,11 +71,12 @@ int main(int argc, char** argv) {
         subsets.erase(it);
 
         //recalculate ratio based on new subset
-        for( const auto &p : subsets) {
+        for( auto &p : subsets) {
             set<int> newElements;
             set_difference(p.first.begin(),p.first.end(),unionSolutionSet.begin(),unionSolutionSet.end(),inserter(newElements,newElements.begin()));
             double newSize = newElements.size();
             tuple<int,int,double> temp = make_tuple(get<0>(p.second),get<1>(p.second), get<0>(p.second) / newSize);
+            p.second = temp;
         }
     }
 
